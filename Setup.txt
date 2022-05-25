@@ -1,0 +1,5 @@
+installation
+npm i js-cookie next-cookies bootstrap redux react-redux redux-promise-middleware axios
+npm i redux react-redux js-cookie next-cookies bootstrap redux react-redux redux-promise-middleware axios
+
+rfc : reacr functional component
