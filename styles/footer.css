@@ -1,0 +1,33 @@
+.footer-fazzpay {
+  /* position: absolute; */
+  /* /* width: 1440px; */
+  height: 68px;
+  /* left: 0px; */
+  /* top: 893px; */
+
+  /* Zwallet/Primary */
+
+  background: #6379f4;
+}
+
+.footer-text1 {
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  /* identical to box height, or 175% */
+
+  color: rgba(239, 239, 239, 0.9);
+}
+
+.footer-text2 {
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  /* identical to box height, or 175% */
+
+  color: #efefef;
+}

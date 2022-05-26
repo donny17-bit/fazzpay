@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import "../styles/auth.css";
 import "../styles/navbar.css";
+import "../styles/footer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
