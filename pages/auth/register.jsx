@@ -1,7 +1,7 @@
 import { React } from "react";
 import Link from "next/link";
 
-function Login() {
+function Register() {
   const handlePassword = (event) => {
     const password = document.querySelector("#password");
     const type =
@@ -39,7 +39,7 @@ function Login() {
             users coverage
           </p>
         </div>
-        <div className="col-sm-5 auth-form-login">
+        <div className="col-sm-5 auth-form-register">
           <h2 className="auth-form-title">
             Start Accessing Banking Needs With All Devices and All Platforms
             With 30.000+ Users
@@ -50,29 +50,45 @@ function Login() {
             that for you!
           </p>
           <form action="" className="form">
-            <div className="input-group mb-3 mt-5">
+            <div className="input-group mt-5">
+              <span className="input-group-text auth-input" id="basic-addon1">
+                <i className="bi-person"></i>
+              </span>
+              <input
+                type="text"
+                className="form-control auth-input"
+                placeholder="Enter your firstname"
+              />
+            </div>
+            <div className="input-group mt-4">
+              <span className="input-group-text auth-input" id="basic-addon1">
+                <i className="bi-person"></i>
+              </span>
+              <input
+                type="text"
+                className="form-control auth-input"
+                placeholder="Enter your lastname"
+              />
+            </div>
+            <div className="input-group mt-4">
               <span className="input-group-text auth-input" id="basic-addon1">
                 <i className="bi-envelope"></i>
               </span>
               <input
                 type="text"
                 className="form-control auth-input"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
+                placeholder="Enter your Email"
               />
             </div>
-            <div className="input-group mb-3 mt-5">
+            <div className="input-group mt-4">
               <span className="input-group-text auth-input" id="basic-addon1">
                 <i className="bi-lock"></i>
               </span>
               <input
                 type="password"
                 className="form-control auth-input"
-                placeholder="Password"
-                aria-label="Username"
+                placeholder="Create your password"
                 id="password"
-                aria-describedby="basic-addon1"
               />
               <span className="input-group-text auth-input" id="basic-addon1">
                 <i
@@ -81,19 +97,16 @@ function Login() {
                 ></i>
               </span>
             </div>
-
-            <p className="text-end auth-forgot">Forgot password?</p>
-
             <div className="d-grid gap-2 mt-5">
-              <button className="btn btn-secondary auth-button-login">
-                Login
+              <button className="btn btn-secondary auth-button-register">
+                Register
               </button>
             </div>
 
-            <p className="text-center mt-5 auth-signup">
-              Don't have account? Let's{" "}
+            <p className="text-center mt-4 auth-signup">
+              Already have an account? Let's{" "}
               <Link href="#">
-                <a className="auth-link">Sign up</a>
+                <a className="auth-link">Login</a>
               </Link>
             </p>
           </form>
@@ -103,4 +116,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
