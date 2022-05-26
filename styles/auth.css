@@ -237,12 +237,36 @@ i {
   .auth-banner {
     display: none;
   }
+
+  /* .auth-pin-row {
+    height: 40px;
+  }
+
+  .auth-pin-col {
+    width: 20px;
+    border-radius: 10px;
+  }
+
+  .auth-input-pin {
+  } */
 }
 
 @media screen and (max-width: 425px) {
   .auth-banner {
     display: none;
   }
+  /* .auth-pin-row {
+    height: 40px;
+  }
+
+  .auth-pin-col {
+    width: 10px;
+    border-radius: 10px;
+  }
+
+  .auth-input-pin {
+    width: 10px;
+  } */
 }
 
 @media screen and (max-width: 768px) {

@@ -1,0 +1,62 @@
+.navbar-fazzpay {
+  height: 140px;
+  background: #ffffff;
+  border-radius: 0px 0px 20px 20px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-row {
+  width: 400px;
+}
+
+.navbar-text {
+  margin: 0;
+  padding: 0 !important;
+}
+
+.navbar-phone {
+  margin: 0;
+  padding: 0 !important;
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+
+  color: rgba(58, 61, 66, 0.9);
+}
+
+.navbar-name {
+  margin: 0;
+  padding: 0 !important;
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 31px;
+  /* identical to box height, or 172% */
+
+  color: #3a3d42;
+}
+
+.navbar-col {
+  width: fit-content !important;
+}
+
+.navbar-img {
+  height: 52px;
+  /* top: 20px; */
+}
+
+.navbar-title {
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 29px;
+  line-height: 40px;
+  /* identical to box height */
+
+  /* Zwallet/Primary */
+
+  color: #6379f4;
+}

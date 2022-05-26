@@ -2,17 +2,6 @@ import { React } from "react";
 import Link from "next/link";
 
 function CreatePin() {
-  const handlePassword = (event) => {
-    const password = document.querySelector("#password");
-    const type =
-      password.getAttribute("type") === "password" ? "text" : "password";
-    password.setAttribute("type", type);
-
-    type === "password"
-      ? event.target.setAttribute("class", "bi-eye-slash")
-      : event.target.setAttribute("class", "bi-eye");
-  };
-
   return (
     <div className="container-fluid">
       <div className="row">
@@ -50,7 +39,7 @@ function CreatePin() {
             account password and the PIN.
           </p>
           <form action="" className="form">
-            <div className="row auth-pin-row mt-5">
+            <div className="row row-cols-8 auth-pin-row mt-5">
               <div className="col border me-3 auth-pin-col text-center">
                 <input
                   type="text"
