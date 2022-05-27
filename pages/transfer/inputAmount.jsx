@@ -52,17 +52,15 @@ export default function InputAmount() {
           </div>
         </div>
         <div className="justify-content-end d-flex">
-          <button className="btn btn-primary inputAmount-button border">
+          <button
+            type="button"
+            className="btn btn-primary inputAmount-button border"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
             Continue
           </button>
         </div>
-        {/* <div className="justify-content-center border d-flex inputAmount-input-container">
-          <input
-            type="text"
-            className="form-control inputAmount-note border-0 "
-            placeholder="Add some notes"
-          />
-        </div> */}
       </div>
     </>
   );

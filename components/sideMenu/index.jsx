@@ -1,10 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import TopUp from "../topUp";
 
 function SideMenu() {
   return (
     <>
       {" "}
+      {/* <TopUp id="exampleModal" /> */}
       <div className="col-3 me-3 ps-0 pe-0 pt-5 border menu-container">
         <div className="menu-item-active col border-start pt-1 border-5 ps-5">
           <Link href="#">
@@ -23,12 +25,12 @@ function SideMenu() {
           </Link>
         </div>
         <div className="menu-item col mt-5 border-start pt-1 border-5 ps-5">
-          <Link href="#">
-            <a className="menu-link">
+          <button className="btn btn-link p-0 menu-btn">
+            <a className="menu-link ">
               <i className="bi bi-plus-lg me-4 align-middle menu-icon"></i> Top
               up
             </a>
-          </Link>
+          </button>
         </div>
         <div className="menu-item col mt-5 border-start pt-1 border-5 ps-5">
           <Link href="#">
