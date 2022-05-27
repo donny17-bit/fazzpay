@@ -1,0 +1,80 @@
+.main-content-inputAmount {
+  /* height: 700px; */
+}
+
+.inputAmount-note {
+  width: 300px !important;
+}
+
+.inputAmount-button {
+  /* Bold (Button) */
+  margin-top: 80px;
+
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  /* identical to box height */
+
+  text-align: center;
+
+  /* Zwallet/White */
+
+  color: #ffffff !important;
+
+  width: 170px;
+  height: 57px;
+  background: #6379f4 !important;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px !important;
+}
+
+.inputAmount-button:hover {
+  background: #1c3bec !important;
+}
+
+.inputAmount-text {
+  width: 338px;
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+
+  color: #7a7886;
+}
+
+.inputAmount-input-container {
+  margin-top: 100px !important ;
+}
+
+.inputAmount-input {
+  height: 56px;
+
+  /* width: 100px !important; */
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  /* font-size: xx-large; */
+  font-weight: 700;
+  font-size: 42px !important;
+  line-height: 56px;
+  /* identical to box height, or 133% */
+
+  text-align: center;
+
+  color: #b5bdcc;
+}
+
+.inputAmount-balance {
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  /* Zwallet/Dark */
+
+  color: #3a3d42;
+}
