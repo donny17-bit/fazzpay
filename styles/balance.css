@@ -1,0 +1,57 @@
+.balance-container {
+  height: 200px;
+  background: #6379f4;
+  border-radius: 20px;
+}
+
+.balance-text {
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 31px;
+  /* identical to box height, or 172% */
+
+  color: #e0e0e0;
+}
+
+.balance-amount {
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 55px;
+
+  color: #ffffff;
+}
+
+.balance-phone {
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: #dfdcdc;
+}
+
+.balance-button {
+  /* position: absolute; */
+  width: 162px;
+  height: 57px;
+  /* left: 1098px; */
+  /* top: 210px; */
+
+  background: rgba(255, 255, 255, 0.2);
+  /* White */
+
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+}
+
+.balance-icon {
+  /* border: 2px solid #b5b0ed; */
+  color: #b5b0ed;
+  font-size: large;
+  /* width: 30px; */
+}
