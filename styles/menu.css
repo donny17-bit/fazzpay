@@ -7,33 +7,20 @@
 }
 
 .menu-container .menu-item {
-  /* border: #6379f4; */
-  /* border: 20px !important; */
-  /* border-left: 20px; */
   height: 40px;
   border-left-color: #ffffff !important;
-  /* padding: 40px !important; */
 }
 
 .menu-container .menu-item-active {
-  /* border: #6379f4; */
-  /* border: 20px !important; */
-  /* border-left: 20px; */
   height: 40px;
   border-left-color: #6379f4 !important;
-  /* padding: 40px !important; */
 }
 
 .menu-container .menu-item-logout {
-  /* border: #6379f4; */
-  /* border: 20px !important; */
-  /* border-left: 20px; */
   height: 40px;
   position: absolute;
   bottom: 40px;
-  /* bottom: 20px !important; */
   border-left-color: #ffffff !important;
-  /* padding: 40px !important; */
 }
 
 .menu-icon-active {

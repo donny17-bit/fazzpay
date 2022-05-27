@@ -42,11 +42,11 @@
   /* left: 1098px; */
   /* top: 210px; */
 
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2) !important;
   /* White */
 
-  border: 1px solid #ffffff;
-  border-radius: 10px;
+  border: 1px solid #ffffff !important;
+  border-radius: 10px !important;
 }
 
 .balance-icon {

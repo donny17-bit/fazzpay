@@ -4,6 +4,7 @@ import "../styles/navbar.css";
 import "../styles/footer.css";
 import "../styles/menu.css";
 import "../styles/balance.css";
+import "../styles/transfer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
