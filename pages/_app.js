@@ -7,6 +7,7 @@ import "../styles/balance.css";
 import "../styles/transfer.css";
 import "../styles/inputAmount.css";
 import "../styles/history.css";
+import "../styles/profile.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
