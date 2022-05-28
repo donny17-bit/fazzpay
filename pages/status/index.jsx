@@ -5,7 +5,7 @@ import Link from "next/link";
 import List from "../../components/list/list";
 // import Image from "/assets/2.png";
 
-export default function Confirmation() {
+export default function Status() {
   return (
     <>
       <div className="col border p-5 main-content">
@@ -45,6 +45,6 @@ export default function Confirmation() {
   );
 }
 
-Confirmation.getLayout = function getLayout(page) {
+Status.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
