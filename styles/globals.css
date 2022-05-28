@@ -25,3 +25,12 @@ a {
   border-radius: 25px;
   /* height: 600px; */
 }
+
+.link-list {
+  text-decoration: none;
+  color: #6379f4;
+}
+
+.link-icon {
+  font-size: x-large;
+}

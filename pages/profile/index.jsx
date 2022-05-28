@@ -25,19 +25,19 @@ export default function Profile() {
           <div className="col d-grid col-7">
             <button className="btn btn-secondary border-0 d-flex justify-content-between profile-btn">
               Personal Information
-              <i className="bi bi-arrow-right" style={{ color: "#4D4B57" }}></i>
+              <i className="bi bi-arrow-right profile-icon"></i>
             </button>
           </div>
           <div className="col d-grid col-7">
             <button className="btn btn-secondary border-0 d-flex justify-content-between profile-btn">
               Change Password
-              <i className="bi bi-arrow-right" style={{ color: "#4D4B57" }}></i>
+              <i className="bi bi-arrow-right profile-icon"></i>
             </button>
           </div>
           <div className="col d-grid col-7">
             <button className="btn btn-secondary border-0 d-flex justify-content-between profile-btn">
               Change Pin
-              <i className="bi bi-arrow-right" style={{ color: "#4D4B57" }}></i>
+              <i className="bi bi-arrow-right profile-icon"></i>
             </button>
           </div>
 
