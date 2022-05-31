@@ -17,7 +17,7 @@ const nextConfig = {
       },
       {
         source: "/create-pin",
-        destination: "/auth/cratePin",
+        destination: "/auth/createPin",
       },
       {
         source: "/reset-password",

@@ -16,7 +16,7 @@ function Register() {
       event.preventDefault();
       const result = await axios.post("auth/register", form);
       alert(result.data.msg + ", silahkan verifikasi email lalu login");
-      await router.push("/login");
+      router.push("/login");
     } catch (error) {
       alert(error.response.data.msg);
       console.log(error.response.data.msg);

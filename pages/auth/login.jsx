@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 // import axiosApiIntances from "../../utils/axios";
 import axios from "../../utils/axios";
 import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 function Login() {
+  const router = useRouter();
   const [form, setForm] = useState({});
 
   const handleSubmit = async (event) => {
@@ -15,6 +17,11 @@ function Login() {
       Cookies.set("id", result.data.data.id);
 
       alert(result.data.msg);
+      if (!result.data.data.pin) {
+        router.push("/create-pin");
+      } else {
+        router.push("/home");
+      }
       // console.log(result);
     } catch (error) {
       console.log(error);

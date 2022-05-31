@@ -1,7 +1,50 @@
-import { React } from "react";
 import Link from "next/link";
+import React, { useState } from "react";
+import axios from "../../utils/axios";
+import Cookies from "js-cookie";
 
 function CreatePin() {
+  // const pin = [];
+  const [pin, setPin] = useState();
+
+  const handleChange = (event) => {
+    if (event.target.value) {
+      const nextSibling = document.getElementById(
+        `pin-${parseInt(event.target.name, 10) + 1}`
+      );
+
+      if (nextSibling !== null) {
+        nextSibling.focus();
+      }
+    }
+    setPin({ ...pin, [`pin${event.target.name}`]: event.target.value });
+    // pin.push(`${event.target.value}`);
+  };
+
+  // pin belum jadi
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+
+      const allPin =
+        pin.pin1 + pin.pin2 + pin.pin3 + pin.pin4 + pin.pin5 + pin.pin6;
+
+      console.log(allPin);
+      const pinForm = parseInt(allPin);
+
+      // ubah array pin ke string pin
+      const id = Cookies.get("id");
+      // let pinForm = pin.toString().replaceAll(",", "");
+      // pinForm = parseInt(pinForm);
+
+      console.log(typeof pinForm);
+      const result = await axios.patch(`user/pin/${id}`, { pin: allPin });
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -38,13 +81,27 @@ function CreatePin() {
             Zwallet app. Keep it secret and don’t tell anyone about your Zwallet
             account password and the PIN.
           </p>
-          <form action="" className="form">
+          <form onSubmit={handleSubmit} className="form">
             <div className="row row-cols-8 auth-pin-row mt-5">
               <div className="col border me-3 auth-pin-col text-center">
                 <input
                   type="text"
                   className="form-control auth-input-pin"
+                  maxLength={1}
+                  id="pin-1"
+                  name="1"
+                  onChange={(event) => handleChange(event)}
+                />
+              </div>
+              <div className="col border me-3 auth-pin-col">
+                <input
+                  type="text"
+                  className="form-control auth-input-pin"
+                  maxLength={1}
+                  id="pin-2"
+                  name="2"
                   placeholder=""
+                  onChange={(event) => handleChange(event)}
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                 />
@@ -53,7 +110,11 @@ function CreatePin() {
                 <input
                   type="text"
                   className="form-control auth-input-pin"
+                  maxLength={1}
+                  id="pin-3"
+                  name="3"
                   placeholder=""
+                  onChange={(event) => handleChange(event)}
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                 />
@@ -62,7 +123,11 @@ function CreatePin() {
                 <input
                   type="text"
                   className="form-control auth-input-pin"
+                  maxLength={1}
+                  id="pin-4"
+                  name="4"
                   placeholder=""
+                  onChange={(event) => handleChange(event)}
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                 />
@@ -71,7 +136,11 @@ function CreatePin() {
                 <input
                   type="text"
                   className="form-control auth-input-pin"
+                  maxLength={1}
+                  id="pin-5"
+                  name="5"
                   placeholder=""
+                  onChange={(event) => handleChange(event)}
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                 />
@@ -79,17 +148,12 @@ function CreatePin() {
               <div className="col border me-3 auth-pin-col">
                 <input
                   type="text"
-                  className="form-control auth-input-pin"
+                  className="form-control auth-input-pin  pe-0"
+                  maxLength={1}
+                  id="pin-6"
+                  name="6"
                   placeholder=""
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                />
-              </div>
-              <div className="col border me-3 auth-pin-col">
-                <input
-                  type="text"
-                  className="form-control auth-input-pin"
-                  placeholder=""
+                  onChange={(event) => handleChange(event)}
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                 />
@@ -97,7 +161,10 @@ function CreatePin() {
             </div>
 
             <div className="d-grid gap-2 mt-5">
-              <button className="btn btn-secondary auth-button-pin">
+              <button
+                type="submit"
+                className="btn btn-secondary auth-button-pin"
+              >
                 Confirm
               </button>
             </div>
