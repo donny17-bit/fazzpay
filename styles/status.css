@@ -1,0 +1,26 @@
+.status-icon {
+  color: rgba(30, 193, 95, 1);
+  font-size: 70px;
+}
+
+.status-btn .status-buttonPDF {
+  margin-top: 80px;
+  width: 243px;
+  height: 57px;
+  background: rgba(99, 121, 244, 0.15);
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px !important;
+
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  /* identical to box height */
+
+  color: #6379f4;
+}
+
+.status-download {
+  color: rgba(99, 121, 244, 1);
+}

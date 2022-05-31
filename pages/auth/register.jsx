@@ -1,7 +1,28 @@
-import { React } from "react";
 import Link from "next/link";
+import React, { useState } from "react";
+import { useRouter } from "next/router";
+import axios from "../../utils/axios";
 
 function Register() {
+  const router = useRouter();
+  const [form, setForm] = useState({});
+
+  const handleChangeForm = (event) => {
+    setForm({ ...form, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const result = await axios.post("auth/register", form);
+      alert(result.data.msg + ", silahkan verifikasi email lalu login");
+      await router.push("/login");
+    } catch (error) {
+      alert(error.response.data.msg);
+      console.log(error.response.data.msg);
+    }
+  };
+
   const handlePassword = (event) => {
     const password = document.querySelector("#password");
     const type =
@@ -49,15 +70,17 @@ function Register() {
             wherever you are. Desktop, laptop, mobile phone? we cover all of
             that for you!
           </p>
-          <form action="" className="form">
+          <form onSubmit={handleSubmit} className="form">
             <div className="input-group mt-5">
               <span className="input-group-text auth-input" id="basic-addon1">
                 <i className="bi-person"></i>
               </span>
               <input
                 type="text"
+                name="firstName"
                 className="form-control auth-input"
                 placeholder="Enter your firstname"
+                onChange={(event) => handleChangeForm(event)}
               />
             </div>
             <div className="input-group mt-4">
@@ -66,8 +89,10 @@ function Register() {
               </span>
               <input
                 type="text"
+                name="lastName"
                 className="form-control auth-input"
                 placeholder="Enter your lastname"
+                onChange={(event) => handleChangeForm(event)}
               />
             </div>
             <div className="input-group mt-4">
@@ -76,8 +101,10 @@ function Register() {
               </span>
               <input
                 type="text"
+                name="email"
                 className="form-control auth-input"
                 placeholder="Enter your Email"
+                onChange={(event) => handleChangeForm(event)}
               />
             </div>
             <div className="input-group mt-4">
@@ -86,9 +113,11 @@ function Register() {
               </span>
               <input
                 type="password"
+                name="password"
                 className="form-control auth-input"
                 placeholder="Create your password"
                 id="password"
+                onChange={(event) => handleChangeForm(event)}
               />
               <span className="input-group-text auth-input" id="basic-addon1">
                 <i
@@ -98,14 +127,17 @@ function Register() {
               </span>
             </div>
             <div className="d-grid gap-2 mt-5">
-              <button className="btn btn-secondary auth-button-register">
+              <button
+                type="submit"
+                className="btn btn-secondary auth-button-register"
+              >
                 Register
               </button>
             </div>
 
             <p className="text-center mt-4 auth-signup">
               Already have an account? Let's{" "}
-              <Link href="#">
+              <Link href="/login">
                 <a className="auth-link">Login</a>
               </Link>
             </p>

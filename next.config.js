@@ -5,14 +5,26 @@ const nextConfig = {
     URL_BACKEND: "https://fazzpay.herokuapp.com",
     URL_BACKEND2: "https://jsonplaceholder.typicode.com",
   },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: "/login",
-  //       destination: "/auth/login",
-  //     },
-  //   ];
-  // },
+  async rewrites() {
+    return [
+      {
+        source: "/login",
+        destination: "/auth/login",
+      },
+      {
+        source: "/register",
+        destination: "/auth/register",
+      },
+      {
+        source: "/create-pin",
+        destination: "/auth/cratePin",
+      },
+      {
+        source: "/reset-password",
+        destination: "/auth/resetPass",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

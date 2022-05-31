@@ -18,8 +18,8 @@ install react bootstrap
 pagination :
 history dan transfer
 
-ssr (tidak pake redux)
-transaksi, history, dashboard
+ssr (tidak pake redux):
+transaksi getdata user, tf history, dashboard
 
 lainnya csr
 
