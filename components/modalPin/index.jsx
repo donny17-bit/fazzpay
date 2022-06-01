@@ -5,6 +5,7 @@ import axios from "../../utils/axios";
 
 export default function ModalPin(props) {
   const [pin, setPin] = useState();
+
   const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
 
   // allert belum
@@ -40,10 +41,12 @@ export default function ModalPin(props) {
       const allPin =
         pin.pin1 + pin.pin2 + pin.pin3 + pin.pin4 + pin.pin5 + pin.pin6;
 
-      console.log(allPin);
+      // cek pin
+      await axios.get(`user/pin?pin=${allPin}`);
 
-      const result = await axios.get(`user/pin?pin=${allPin}`);
-      console.log(result);
+      props.handleTransfer();
+      // const result = await axios.
+      // console.log(result);
       // alihin ke sukses create pin page
     } catch (error) {
       console.log(error);

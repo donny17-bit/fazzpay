@@ -12,6 +12,7 @@ import axios from "../../utils/axios";
 import axiosServer from "../../utils/axiosServer";
 import Cookies from "js-cookie";
 import cookies from "next-cookies";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps(context) {
   try {
@@ -43,6 +44,8 @@ export async function getServerSideProps(context) {
 }
 
 export default function Confirmation(props) {
+  const router = useRouter();
+  // const dispatch = useDispatch();
   const transfer = useSelector((state) => state.transfer);
   const defaultImg = "https://cdn-icons-png.flaticon.com/512/747/747376.png";
 
@@ -59,6 +62,14 @@ export default function Confirmation(props) {
   console.log(sender);
   console.log(dataTransfer);
 
+  const handleTransfer = async () => {
+    const result = await axios.post(`/transaction/transfer`, dataTransfer);
+
+    // await dispatch(type: )
+    console.log(result);
+    router.push("/status");
+  };
+
   return (
     <>
       <div className="col border p-5 main-content">
@@ -66,7 +77,7 @@ export default function Confirmation(props) {
           <label className="transfer-label p-0">Transfer To</label>
         </div>
         <div className="row m-0 mt-3">
-          <div className="row border m-0 p-4  register-list">
+          <div className="row border m-0 p-4 register-list">
             <div className="col col-2 p-0 transfer-img">
               <img
                 src={receiver.image ? receiver.image : defaultImg}
@@ -116,8 +127,10 @@ export default function Confirmation(props) {
           </div>
           <ModalPin
             show={show}
+            data={dataTransfer}
             handleShow={handleShow}
             handleClose={handleClose}
+            handleTransfer={handleTransfer}
           />
         </div>
       </div>
