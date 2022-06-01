@@ -4,7 +4,6 @@ import axios from "../../utils/axios";
 import Cookies from "js-cookie";
 
 function CreatePin() {
-  // const pin = [];
   const [pin, setPin] = useState();
 
   const handleChange = (event) => {
@@ -18,10 +17,8 @@ function CreatePin() {
       }
     }
     setPin({ ...pin, [`pin${event.target.name}`]: event.target.value });
-    // pin.push(`${event.target.value}`);
   };
 
-  // pin belum jadi
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
@@ -32,7 +29,6 @@ function CreatePin() {
       console.log(allPin);
       const pinForm = parseInt(allPin);
 
-      // ubah array pin ke string pin
       const id = Cookies.get("id");
       // let pinForm = pin.toString().replaceAll(",", "");
       // pinForm = parseInt(pinForm);
@@ -40,6 +36,7 @@ function CreatePin() {
       console.log(typeof pinForm);
       const result = await axios.patch(`user/pin/${id}`, { pin: allPin });
       console.log(result);
+      // alihin ke sukses create pin page
     } catch (error) {
       console.log(error);
     }

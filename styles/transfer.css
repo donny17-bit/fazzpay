@@ -65,3 +65,9 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
 }
+
+.register-list:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 100px rgba(0, 0, 0, 0.05);
+  background: #e2e1e1;
+}

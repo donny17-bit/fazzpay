@@ -11,11 +11,17 @@ import "../styles/profile.css";
 import "../styles/status.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { Provider } from "react-redux";
+import store from "../stores";
 
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);
 
-  return getLayout(<Component {...pageProps} />);
+  return getLayout(
+    <Provider store={store}>
+      <Component {...pageProps} />{" "}
+    </Provider>
+  );
   // return <Component {...pageProps} />;
 }
 
