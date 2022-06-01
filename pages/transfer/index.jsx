@@ -88,7 +88,7 @@ export default function Transfer(props) {
           {/* list data */}
           {data.map((item, index) => (
             <div
-              className="row border m-0 p-4 mt-4 register-list"
+              className="row border m-0 p-4 mt-4 register-list transfer-list"
               key={item.id}
               onClick={() => handleClick(index)}
             >

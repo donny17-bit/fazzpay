@@ -57,12 +57,13 @@ export async function getServerSideProps(context) {
 export default function InputAmount(props) {
   const defaultImg = "https://cdn-icons-png.flaticon.com/512/747/747376.png";
   const router = useRouter();
+  const dispatch = useDispatch();
+
   const user = useSelector((state) => state.user);
 
   console.log(user.data[props.index]);
-
+  console.log(user);
   // console.log(Cookies.get("id"));
-  // const dispatch = useDispatch();
 
   // console.log(router.query.id);
 
@@ -79,8 +80,13 @@ export default function InputAmount(props) {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    await dispatch({
+      type: "SET_DATA_TRANSFER",
+      data: { form: form, dataReceiver: data },
+    });
+    // await dispatch({ type: "SET_DATA_RECEIVER", data: data });
     router.push("/confirmation");
   };
 
