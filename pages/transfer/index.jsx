@@ -13,9 +13,11 @@ export async function getServerSideProps(context) {
     const dataCookies = cookies(context);
     // console.log(dataCookies);
     const params = context.query;
+    console.log(context.query);
+    const search = !params?.search ? "" : params.search;
     const page = !params?.page ? 1 : params.page;
     const result = await axiosServer.get(
-      `user?page=${page}&limit=5&search=&sort=firstName ASC`,
+      `user?page=${page}&limit=5&search=${search}&sort=firstName ASC`,
       {
         headers: {
           Authorization: `Bearer ${dataCookies.token}`,
@@ -48,6 +50,7 @@ export default function Transfer(props) {
   const router = useRouter();
   // console.log(props);
   let totalPage = [];
+  const [search, setSearch] = useState("");
 
   for (let i = 0; i < props.totalPage; i++) {
     totalPage.push(i);
@@ -61,6 +64,17 @@ export default function Transfer(props) {
     router.push(`/transfer/${index}`);
   };
 
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const handleKey = (event) => {
+    if (event.key == "Enter") {
+      router.push(`/transfer?search=${search}`);
+    }
+  };
+
+  console.log(search);
   useEffect(() => {
     // pemanggilan reducer untuk menyimpan data user ke redux
     dispatch({ type: "SET_ALL_DATA_USER", data: props.data });
@@ -83,6 +97,8 @@ export default function Transfer(props) {
               type="text"
               className="form-control transfer-search-input border-0"
               placeholder="Search receiver here"
+              onChange={(event) => handleChange(event)}
+              onKeyPress={(event) => handleKey(event)}
             />
           </div>
 
@@ -108,7 +124,7 @@ export default function Transfer(props) {
           ))}
 
           {/* pagination blm sempurna */}
-          <div className="row border m-0 p-1 mt-4 register-list text-center justify-content-center">
+          <div className="row m-0 p-1 mt-4 register-list text-center justify-content-center">
             <div className="col col-2 p-0 transfer-img d-grid">
               <button
                 className="btn btn-outline-primary"
