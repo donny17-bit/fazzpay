@@ -79,7 +79,17 @@ export default function Home(props) {
         <BalanceCard />
         <div className="row mt-3 m-0">
           <div className="col border me-3 dashboard-container"></div>
-          <div className="col-5 border dashboard-container p-4">
+          <div
+            className={`col-5 border p-4 ${
+              history.length < 3
+                ? "dashboard-container1"
+                : "dashboard-container"
+            }`}
+          >
+            {/* <div
+            className="col-5 border dashboard-container p-4"
+           style={{ height: "300px" }}             
+          > */}
             <div className="row m-0 ">
               <div className="col p-0">
                 <label className="transfer-label p-0">

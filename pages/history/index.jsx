@@ -4,6 +4,7 @@ import Layout from "../../components/layout";
 // import SideMenu from "../../components/sideMenu";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Dropdown from "react-bootstrap/Dropdown";
 
 import axiosServer from "../../utils/axiosServer";
 import cookies from "next-cookies";
@@ -13,9 +14,10 @@ export async function getServerSideProps(context) {
     const dataCookies = cookies(context);
     // console.log(dataCookies);
     const params = context.query;
+    const filter = !params?.filter ? "MONTH" : params.filter;
     const page = !params?.page ? 1 : params.page;
     const result = await axiosServer.get(
-      `/transaction/history?page=${page}&limit=10&filter=MONTH`,
+      `/transaction/history?page=${page}&limit=10&filter=${filter}`,
       {
         headers: {
           Authorization: `Bearer ${dataCookies.token}`,
@@ -54,6 +56,10 @@ export default function History(props) {
     totalPage.push(i);
   }
 
+  // const handleFilter = (event) => {
+  //   router
+  // }
+
   useEffect(() => {
     // pemanggilan reducer untuk menyimpan data user ke redux
     // dispatch({ type: "SET_ALL_DATA_USER", data: props.data });
@@ -67,10 +73,33 @@ export default function History(props) {
           <div className="col p-0">
             <label className="transfer-label p-0">Transaction History</label>
           </div>
-          <div className="col  p-0 d-flex justify-content-end">
-            <button className="btn btn-secondary history-btn border-0">
+          <div className="col p-0 d-flex justify-content-end">
+            <Dropdown>
+              <Dropdown.Toggle variant="secondary">
+                --Select Filter--
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item
+                  onClick={() => router.push("/history?filter=WEEK")}
+                >
+                  WEEK
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => router.push("/history?filter=MONTH")}
+                >
+                  MONTH
+                </Dropdown.Item>
+
+                <Dropdown.Item
+                  onClick={() => router.push("/history?filter=YEAR")}
+                >
+                  YEAR
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            {/* <button className="btn btn-secondary history-btn border-0">
               --Select Filter--
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="row m-0 mt-4">

@@ -37,6 +37,16 @@ const user = (state = initialState, action) => {
           : action.payload.message,
       };
     }
+    case "RESET_DATA": {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: [],
+        pageInfo: {},
+        msg: "",
+      };
+    }
     // case "SET_ALL_DATA_USER": {
     //   return {
     //     ...state,

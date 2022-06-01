@@ -6,14 +6,20 @@ import axios from "../../utils/axios";
 import Cookies from "js-cookie";
 import ModalTopup from "../modalTopup";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function SideMenu() {
   const router = useRouter();
   const page = router.route;
 
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  console.log(user);
 
   const handleTopup = (event) => {
     event.preventDefault();
@@ -28,8 +34,10 @@ function SideMenu() {
     const result = await axios.post("/auth/logout");
     console.log(result);
 
+    await dispatch({ type: "RESET_DATA" });
     Cookies.remove("id");
     Cookies.remove("token");
+
     router.push("/login");
   };
 

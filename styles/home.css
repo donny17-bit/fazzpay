@@ -4,6 +4,12 @@
   border-radius: 20px;
 }
 
+.dashboard-container1 {
+  height: 400px;
+  background: #ffff;
+  border-radius: 20px;
+}
+
 .home-link {
   text-decoration: none;
 }

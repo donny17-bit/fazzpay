@@ -11,9 +11,8 @@ import { useDispatch } from "react-redux";
 export async function getServerSideProps(context) {
   try {
     const dataCookies = cookies(context);
-    // console.log(dataCookies);
+
     const params = context.query;
-    console.log(context.query);
     const search = !params?.search ? "" : params.search;
     const page = !params?.page ? 1 : params.page;
     const result = await axiosServer.get(

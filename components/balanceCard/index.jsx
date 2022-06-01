@@ -7,7 +7,6 @@ function BalanceCard() {
   const router = useRouter();
   const user = useSelector((state) => state.user);
 
-  console.log(user);
   const data = user.data;
 
   return (
