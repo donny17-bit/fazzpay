@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 
 import cookies from "next-cookies";
 import axiosServer from "../../utils/axiosServer";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps(context) {
   try {
@@ -39,13 +40,12 @@ export async function getServerSideProps(context) {
 
 export default function Status(props) {
   const defaultImg = "https://cdn-icons-png.flaticon.com/512/747/747376.png";
+  const router = useRouter();
   const transfer = useSelector((state) => state.transfer);
-  console.log(transfer);
+
   const [receiver, setReceiver] = useState(transfer.data.dataReceiver);
   const [dataTransfer, setDataTransfer] = useState(transfer.data.form);
   const [sender, setSender] = useState(props.data);
-
-  console.log(sender);
 
   return (
     <>
@@ -93,6 +93,9 @@ export default function Status(props) {
             </button>
             <button
               type="button"
+              onClick={() => {
+                router.push("/home");
+              }}
               className="btn btn-primary inputAmount-button border"
             >
               Back to Home

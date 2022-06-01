@@ -4,10 +4,16 @@ import TopUp from "../topUp";
 import { useRouter } from "next/router";
 import axios from "../../utils/axios";
 import Cookies from "js-cookie";
+import ModalTopup from "../modalTopup";
+import { useState } from "react";
 
 function SideMenu() {
   const router = useRouter();
   const page = router.route;
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleLogout = async (event) => {
     event.preventDefault();
@@ -60,12 +66,19 @@ function SideMenu() {
         </div>
 
         <div className="menu-item col mt-5 border-start pt-1 border-5 ps-5">
-          <button className="btn btn-link p-0 menu-btn">
+          <button className="btn btn-link p-0 menu-btn" onClick={handleShow}>
             <a className="menu-link ">
               <i className="bi bi-plus-lg me-4 align-middle menu-icon"></i>
               Top up
             </a>
           </button>
+          <ModalTopup
+            show={show}
+            // data={dataTransfer}
+            handleShow={handleShow}
+            handleClose={handleClose}
+            // handleTransfer={handleTransfer}
+          />
         </div>
         <div
           className={`${
