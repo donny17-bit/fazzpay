@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Layout from "../../components/layout";
 import Link from "next/link";
 import List from "../../components/list/list";
+import ModalPin from "../../components/modalPin";
 
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -48,6 +49,12 @@ export default function Confirmation(props) {
   const [receiver, setReceiver] = useState(transfer.data.dataReceiver);
   const [dataTransfer, setDataTransfer] = useState(transfer.data.form);
   const [sender, setSender] = useState(props.data);
+  // const [modalShow, setModalShow] = useState(false);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   console.log(receiver);
   console.log(sender);
   console.log(dataTransfer);
@@ -99,6 +106,7 @@ export default function Confirmation(props) {
           <div className="justify-content-end d-flex">
             <button
               type="button"
+              onClick={handleShow}
               className="btn btn-primary inputAmount-button border"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
@@ -106,6 +114,11 @@ export default function Confirmation(props) {
               Continue
             </button>
           </div>
+          <ModalPin
+            show={show}
+            handleShow={handleShow}
+            handleClose={handleClose}
+          />
         </div>
       </div>
     </>
