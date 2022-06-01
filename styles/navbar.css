@@ -44,7 +44,8 @@
 }
 
 .navbar-img {
-  height: 52px;
+  /* height: 52px; */
+  width: 55px;
   /* top: 20px; */
 }
 
