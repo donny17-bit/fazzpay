@@ -60,6 +60,7 @@ export default function Transfer(props) {
   const handleClick = (index) => {
     router.push(`/transfer/${index}`);
   };
+
   useEffect(() => {
     // pemanggilan reducer untuk menyimpan data user ke redux
     dispatch({ type: "SET_ALL_DATA_USER", data: props.data });

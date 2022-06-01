@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button } from "react-bootstrap";
 import axios from "../../utils/axios";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
 export default function ModalTopup(props) {
-  const router = useRouter();
+  // const router = useRouter();
   const [amount, setAmount] = useState({
     amount: "",
   });
@@ -29,25 +29,15 @@ export default function ModalTopup(props) {
     setAmount({ ...amount, [event.target.name]: event.target.value });
   };
 
-  console.log(amount);
-
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
 
-      console.log(amount);
       const result = await axios.post(`transaction/top-up`, amount);
-
       const redirectURL = result.data.data.redirectUrl;
-      // props.handleTransfer();
-      // const result = await axios.
-      // console.log(result.data.data);
-      // console.log(result.data.data.redirectUrl);
+
       alert("Please Pay Top up");
       window.open(redirectURL);
-      // router.push(redirectURL);
-
-      // alihin ke sukses create pin page
     } catch (error) {
       console.log(error);
       // alert("Wrong PIN");

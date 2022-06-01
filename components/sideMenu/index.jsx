@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import TopUp from "../topUp";
+
 import { useRouter } from "next/router";
 import axios from "../../utils/axios";
 import Cookies from "js-cookie";
@@ -15,6 +15,14 @@ function SideMenu() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const handleTopup = (event) => {
+    event.preventDefault();
+
+    // event.target.class = "menu-link-active";
+    setShow(true);
+    // console.log(event.target.class);
+  };
+
   const handleLogout = async (event) => {
     event.preventDefault();
     const result = await axios.post("/auth/logout");
@@ -27,8 +35,6 @@ function SideMenu() {
 
   return (
     <>
-      {" "}
-      {/* <TopUp id="exampleModal" /> */}
       <div className="col-3 me-3 ps-0 pe-0 pt-5 border menu-container">
         <div
           className={`${
@@ -66,7 +72,11 @@ function SideMenu() {
         </div>
 
         <div className="menu-item col mt-5 border-start pt-1 border-5 ps-5">
-          <button className="btn btn-link p-0 menu-btn" onClick={handleShow}>
+          <button
+            id="topup"
+            className="btn btn-link p-0 menu-btn"
+            onClick={(event) => handleTopup(event)}
+          >
             <a className="menu-link ">
               <i className="bi bi-plus-lg me-4 align-middle menu-icon"></i>
               Top up
@@ -74,10 +84,8 @@ function SideMenu() {
           </button>
           <ModalTopup
             show={show}
-            // data={dataTransfer}
             handleShow={handleShow}
             handleClose={handleClose}
-            // handleTransfer={handleTransfer}
           />
         </div>
         <div
