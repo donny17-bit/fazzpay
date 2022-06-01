@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const user = useSelector((state) => state.user);
-  // console.log(user.data);
+
+  // console.log(user);
   const data = user.data;
   const defaultImg = "https://cdn-icons-png.flaticon.com/512/747/747376.png";
 

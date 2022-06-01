@@ -9,6 +9,7 @@ import "../styles/inputAmount.css";
 import "../styles/history.css";
 import "../styles/profile.css";
 import "../styles/status.css";
+import "../styles/home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 // import { Provider } from "react-redux";

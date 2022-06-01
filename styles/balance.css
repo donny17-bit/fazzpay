@@ -49,6 +49,12 @@
   border-radius: 10px !important;
 }
 
+.balance-button:hover {
+  background: #1c3bec !important;
+  border: #1c3bec !important;
+  /* box-shadow: #6379f4 !important; */
+}
+
 .balance-icon {
   /* border: 2px solid #b5b0ed; */
   color: #b5b0ed;

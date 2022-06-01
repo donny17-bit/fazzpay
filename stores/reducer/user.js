@@ -32,19 +32,21 @@ const user = (state = initialState, action) => {
         isError: true,
         data: [],
         pageInfo: {},
-        msg: action.payload.response.data.msg,
+        msg: action.payload.response.data
+          ? action.payload.response.data.msg
+          : action.payload.message,
       };
     }
-    case "SET_ALL_DATA_USER": {
-      return {
-        ...state,
-        isLoading: false,
-        isError: false,
-        data: action.data,
-        // pageInfo: action.payload.data.pagination,
-        // msg: action.payload.data.msg,
-      };
-    }
+    // case "SET_ALL_DATA_USER": {
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     isError: false,
+    //     data: action.data,
+    //     // pageInfo: action.payload.data.pagination,
+    //     // msg: action.payload.data.msg,
+    //   };
+    // }
 
     default: {
       return state;

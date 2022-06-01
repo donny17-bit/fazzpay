@@ -59,15 +59,15 @@ export default function InputAmount(props) {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.user);
+  const transfer = useSelector((state) => state.transfer);
 
-  console.log(user.data[props.index]);
-  console.log(user);
+  console.log(transfer.data[props.index]);
+  console.log(transfer);
   // console.log(Cookies.get("id"));
 
   // console.log(router.query.id);
 
-  const [data, setData] = useState(user.data[props.index]);
+  const [data, setData] = useState(transfer.data[props.index]);
   const [dataSender, setDataSender] = useState(props.data);
   const [form, setForm] = useState({
     receiverId: data.id,

@@ -8,6 +8,16 @@ const initialState = {
 
 const transfer = (state = initialState, action) => {
   switch (action.type) {
+    case "SET_ALL_DATA_USER": {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: action.data,
+        // pageInfo: action.payload.data.pagination,
+        // msg: action.payload.data.msg,
+      };
+    }
     case "SET_DATA_TRANSFER": {
       return {
         ...state,
