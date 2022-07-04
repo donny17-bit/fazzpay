@@ -89,10 +89,12 @@ export default function Profile() {
             </Link>
           </div>
           <div className="col d-grid col-7">
-            <button className="btn btn-secondary border-0 d-flex justify-content-between profile-btn">
-              Change Pin
-              <i className="bi bi-arrow-right profile-icon"></i>
-            </button>
+            <Link href="/profile/checkPin">
+              <a className="btn btn-secondary border-0 d-flex justify-content-between profile-btn">
+                Change Pin
+                <i className="bi bi-arrow-right profile-icon"></i>
+              </a>
+            </Link>
           </div>
 
           <div className="col d-grid col-7">

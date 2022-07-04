@@ -5,18 +5,13 @@ import Link from "next/link";
 import List from "../../components/list/list";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "../../utils/axios";
+import { useRouter } from "next/router";
 
-export default function ChangePin() {
+export default function CheckPin() {
+  const router = useRouter();
   const user = useSelector((state) => state.user);
   const [data, setData] = useState(user.data);
-  const [pin, setPin] = useState({
-    pin1: "",
-    pin2: "",
-    pin3: "",
-    pin4: "",
-    pin5: "",
-    pin6: "",
-  });
+  const [pin, setPin] = useState();
 
   console.log(pin);
   const handleChange = (event) => {
@@ -39,28 +34,21 @@ export default function ChangePin() {
       const allPin =
         pin.pin1 + pin.pin2 + pin.pin3 + pin.pin4 + pin.pin5 + pin.pin6;
 
-      // console.log(allPin);
-      // const pinForm = parseInt(allPin);
+      console.log(allPin);
+      const pinForm = parseInt(allPin);
 
-      // console.log(typeof pinForm);
-      const result = await axios.patch(`user/pin/${data.id}`, { pin: allPin });
-      console.log(result);
+      // let pinForm = pin.toString().replaceAll(",", "");
+      // pinForm = parseInt(pinForm);
+
+      console.log(typeof pinForm);
+      const result = await axios.get(`user/pin?pin=${allPin}`);
       alert(result.data.msg);
-      resetPin();
+      console.log(result);
+      router.push("/profile/changePin");
+      // alihin ke sukses create pin page
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const resetPin = () => {
-    setPin({
-      pin1: "",
-      pin2: "",
-      pin3: "",
-      pin4: "",
-      pin5: "",
-      pin6: "",
-    });
   };
 
   return (
@@ -71,7 +59,8 @@ export default function ChangePin() {
         </div>
         <div className="row m-0 mt-4">
           <p className="p-0 personalInfo-text">
-            Type your new 6 digits security PIN to use in Zwallet.
+            Enter your current 6 digits Zwallet PIN below to continue to the
+            next steps.
           </p>
         </div>
         <form
@@ -86,7 +75,6 @@ export default function ChangePin() {
                 maxLength={1}
                 id="pin-1"
                 name="1"
-                value={pin.pin1}
                 onChange={(event) => handleChange(event)}
               />
             </div>
@@ -97,7 +85,6 @@ export default function ChangePin() {
                 maxLength={1}
                 id="pin-2"
                 name="2"
-                value={pin.pin2}
                 onChange={(event) => handleChange(event)}
               />
             </div>
@@ -108,7 +95,6 @@ export default function ChangePin() {
                 maxLength={1}
                 id="pin-3"
                 name="3"
-                value={pin.pin3}
                 onChange={(event) => handleChange(event)}
               />
             </div>
@@ -119,7 +105,6 @@ export default function ChangePin() {
                 maxLength={1}
                 id="pin-4"
                 name="4"
-                value={pin.pin4}
                 onChange={(event) => handleChange(event)}
               />
             </div>
@@ -130,7 +115,6 @@ export default function ChangePin() {
                 maxLength={1}
                 id="pin-5"
                 name="5"
-                value={pin.pin5}
                 onChange={(event) => handleChange(event)}
               />
             </div>
@@ -141,14 +125,13 @@ export default function ChangePin() {
                 maxLength={1}
                 id="pin-6"
                 name="6"
-                value={pin.pin6}
                 onChange={(event) => handleChange(event)}
               />
             </div>
           </div>
           <div className="col d-grid col-7 mt-5">
             <button className="btn btn-secondary border-0 d-flex justify-content-center profile-btn">
-              Change PIN
+              Continue
             </button>
           </div>
         </form>
@@ -157,6 +140,6 @@ export default function ChangePin() {
   );
 }
 
-ChangePin.getLayout = function getLayout(page) {
+CheckPin.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
