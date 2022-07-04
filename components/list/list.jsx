@@ -16,9 +16,9 @@ function List(props) {
         <p className="mb-2 transfer-phone">{title}</p>
         <p className="m-0 transfer-name">{content}</p>
       </div>
-      <div className="col ps-0 pt-3 text-end pe-0 ">
+      <div className="col ps-0 pt-3 text-end pe-0 pb-3">
         {others == "Link" ? (
-          <Link href="#">
+          <Link href="/profile/addPhone">
             <a className="link-list">Manage</a>
           </Link>
         ) : others == "Trash" ? (

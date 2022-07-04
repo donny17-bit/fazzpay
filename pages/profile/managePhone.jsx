@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/layout";
 // import SideMenu from "../../components/sideMenu";
 import Link from "next/link";
 import List from "../../components/list/list";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ManagePhone() {
+  const user = useSelector((state) => state.user);
+  const [data, setData] = useState(user.data);
+
   return (
     <>
       <div className="col border p-5 main-content" style={{ height: "600px" }}>

@@ -73,16 +73,20 @@ export default function Profile() {
         </div>
         <div className="row mt-5 m-0 d-flex justify-content-center row-cols-1 g-4">
           <div className="col d-grid col-7">
-            <button className="btn btn-secondary border-0 d-flex justify-content-between profile-btn">
-              Personal Information
-              <i className="bi bi-arrow-right profile-icon"></i>
-            </button>
+            <Link href="/profile/personalInfo">
+              <a className="btn btn-secondary border-0 d-flex justify-content-between profile-btn">
+                Personal Information
+                <i className="bi bi-arrow-right profile-icon"></i>
+              </a>
+            </Link>
           </div>
           <div className="col d-grid col-7">
-            <button className="btn btn-secondary border-0 d-flex justify-content-between profile-btn">
-              Change Password
-              <i className="bi bi-arrow-right profile-icon"></i>
-            </button>
+            <Link href="/profile/changePassword">
+              <a className="btn btn-secondary border-0 d-flex justify-content-between profile-btn">
+                Change Password
+                <i className="bi bi-arrow-right profile-icon"></i>
+              </a>
+            </Link>
           </div>
           <div className="col d-grid col-7">
             <button className="btn btn-secondary border-0 d-flex justify-content-between profile-btn">

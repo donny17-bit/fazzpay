@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/layout";
 // import SideMenu from "../../components/sideMenu";
 import Link from "next/link";
 import List from "../../components/list/list";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function PersonalInfo() {
+  const user = useSelector((state) => state.user);
+  const [data, setData] = useState(user.data);
+
   return (
     <>
       <div className="col border p-5 main-content">
@@ -16,15 +20,13 @@ export default function PersonalInfo() {
             We got your personal information from the sign up proccess. If you
             want to make changes on your information, contact our support.
           </p>
-          <List data={{ title: "First Name", content: "Robert" }} />
-          <List data={{ title: "Last Name", content: "Chandler" }} />
-          <List
-            data={{ title: "Verified E-mail", content: "pewdiepie1@gmail.com" }}
-          />
+          <List data={{ title: "First Name", content: data.firstName }} />
+          <List data={{ title: "Last Name", content: data.lastName }} />
+          <List data={{ title: "Verified E-mail", content: data.email }} />
           <List
             data={{
               title: "Phone Number",
-              content: "+62 813-9387-7946",
+              content: data.noTelp,
               others: "Link",
             }}
           />
