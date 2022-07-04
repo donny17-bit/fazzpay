@@ -1,5 +1,7 @@
 installation
+npx create-next-app@latest
 npm i js-cookie next-cookies bootstrap redux react-redux redux-promise-middleware axios
 npm i redux react-redux js-cookie next-cookies bootstrap redux react-redux redux-promise-middleware axios
+npm i react-bootstrap 
 
 rfc : reacr functional component

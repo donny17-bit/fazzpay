@@ -1,5 +1,8 @@
 .profile-photo {
-  /* width: 50px !important; */
+  width: 80px !important;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .profile-edit {
