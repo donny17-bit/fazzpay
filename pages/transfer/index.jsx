@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import cookies from "next-cookies";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import ReactPaginate from "react-paginate";
 
 export async function getServerSideProps(context) {
   try {
@@ -16,7 +17,7 @@ export async function getServerSideProps(context) {
     const search = !params?.search ? "" : params.search;
     const page = !params?.page ? 1 : params.page;
     const result = await axiosServer.get(
-      `user?page=${page}&limit=5&search=${search}&sort=firstName ASC`,
+      `user?page=${page}&limit=8&search=${search}&sort=firstName ASC`,
       {
         headers: {
           Authorization: `Bearer ${dataCookies.token}`,
@@ -47,12 +48,9 @@ export async function getServerSideProps(context) {
 export default function Transfer(props) {
   const dispatch = useDispatch();
   const router = useRouter();
-  let totalPage = [];
+  const [totalPage, setTotalPage] = useState([]);
   const [search, setSearch] = useState("");
 
-  for (let i = 0; i < props.totalPage; i++) {
-    totalPage.push(i);
-  }
   const [data, setData] = useState(props.data);
   const defaultImg = process.env.URL_DEFAULT_IMG;
 
@@ -71,11 +69,14 @@ export default function Transfer(props) {
   };
 
   console.log(search);
+  // console.log(totalPage);
+
   useEffect(() => {
     // pemanggilan reducer untuk menyimpan data user ke redux
     dispatch({ type: "SET_ALL_DATA_USER", data: props.data });
     setData(props.data);
-  }, props.data);
+    setTotalPage(props.totalPage);
+  }, [props.data]);
 
   return (
     <>
@@ -121,45 +122,29 @@ export default function Transfer(props) {
             </div>
           ))}
 
-          {/* pagination blm sempurna */}
-          <div className="row m-0 p-1 mt-4 register-list text-center justify-content-center">
-            <div className="col col-2 p-0 transfer-img d-grid">
-              <button
-                className="btn btn-outline-primary"
-                onClick={() => {
-                  router.push(`/transfer?page=1`);
-                }}
-              >
-                <i className="bi bi-arrow-left" style={{ color: "blue" }}></i>
-              </button>
-            </div>
-            {
-              // totalPage
-              totalPage.map((item, index) => {
-                if (index >= 5) {
-                  return "";
-                } else {
-                  return (
-                    <div className="col col-2 p-0 transfer-img d-grid">
-                      <button
-                        className="btn btn-outline-primary"
-                        onClick={() => {
-                          router.push(`/transfer?page=${item + 1}`);
-                        }}
-                      >
-                        {item + 1}
-                      </button>
-                    </div>
-                  );
-                }
-              })
-            }
-            <div className="col col-2 p-0 transfer-img d-grid">
-              <button className="btn btn-outline-primary">
-                <i className="bi bi-arrow-right" style={{ color: "blue" }}></i>
-              </button>
-            </div>
-          </div>
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel=">"
+            onPageChange={(e) => {
+              console.log(e.selected + 1);
+              router.push(`/transfer?page=${e.selected + 1}`);
+            }}
+            pageRangeDisplayed={5}
+            marginPagesDisplayed={1}
+            pageCount={totalPage}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+            pageClassName="page-item border-0 me-3"
+            pageLinkClassName="page-link border-0"
+            previousClassName="page-item border-0"
+            previousLinkClassName="page-link border-0 me-3"
+            nextClassName="page-item border-0"
+            nextLinkClassName="page-link border-0"
+            breakClassName="page-item border-0"
+            breakLinkClassName="page-link me-3 border-0"
+            containerClassName="pagination d-flex justify-content-center mt-5 pt-4"
+            activeClassName="active"
+          />
         </div>
       </div>
     </>
@@ -167,10 +152,5 @@ export default function Transfer(props) {
 }
 
 Transfer.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      {/* <SideMenu /> */}
-      {page}
-    </Layout>
-  );
+  return <Layout>{page}</Layout>;
 };

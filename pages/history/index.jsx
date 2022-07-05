@@ -1,13 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Layout from "../../components/layout";
-// import SideMenu from "../../components/sideMenu";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Dropdown from "react-bootstrap/Dropdown";
 
 import axiosServer from "../../utils/axiosServer";
 import cookies from "next-cookies";
+import ReactPaginate from "react-paginate";
 
 export async function getServerSideProps(context) {
   try {
@@ -46,25 +46,19 @@ export async function getServerSideProps(context) {
 
 export default function History(props) {
   const router = useRouter();
-  const defaultImg = "https://cdn-icons-png.flaticon.com/512/747/747376.png";
   const [data, setData] = useState(props.data);
 
+  const [filter, setFilter] = useState();
   console.log(data);
 
-  let totalPage = [];
-  for (let i = 0; i < props.totalPage; i++) {
-    totalPage.push(i);
-  }
-
-  // const handleFilter = (event) => {
-  //   router
-  // }
+  const [totalPage, setTotalPage] = useState([]);
 
   useEffect(() => {
     // pemanggilan reducer untuk menyimpan data user ke redux
     // dispatch({ type: "SET_ALL_DATA_USER", data: props.data });
     setData(props.data);
-  }, props.data);
+    setTotalPage(props.totalPage);
+  }, [props.data]);
 
   return (
     <>
@@ -76,41 +70,47 @@ export default function History(props) {
           <div className="col p-0 d-flex justify-content-end">
             <Dropdown>
               <Dropdown.Toggle variant="secondary">
-                --Select Filter--
+                {filter ? filter : "--Select Filter--"}
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item
-                  onClick={() => router.push("/history?filter=WEEK")}
+                  onClick={() => {
+                    setFilter("WEEK");
+                    router.push("/history?filter=WEEK");
+                  }}
                 >
                   WEEK
                 </Dropdown.Item>
                 <Dropdown.Item
-                  onClick={() => router.push("/history?filter=MONTH")}
+                  onClick={() => {
+                    setFilter("MONTH");
+                    router.push("/history?filter=MONTH");
+                  }}
                 >
                   MONTH
                 </Dropdown.Item>
 
                 <Dropdown.Item
-                  onClick={() => router.push("/history?filter=YEAR")}
+                  onClick={() => {
+                    setFilter("YEAR");
+                    router.push("/history?filter=YEAR");
+                  }}
                 >
                   YEAR
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            {/* <button className="btn btn-secondary history-btn border-0">
-              --Select Filter--
-            </button> */}
           </div>
         </div>
         <div className="row m-0 mt-4">
           {data.map((item) => (
-            <div className="row m-0 p-2 mt-4 history-list">
+            <div className="row m-0 p-2 mt-4 history-list" key={item.id}>
               <div className="col col-2 p-0 transfer-img">
                 <img
                   src={
                     item.image
-                      ? `https://res.cloudinary.com/dd1uwz8eu/image/upload/v1653276449/${item.image}`
-                      : defaultImg
+                      ? process.env.URL_IMAGE + item.image
+                      : process.env.URL_DEFAULT_IMG
                   }
                   alt=""
                   className="transfer-img"
@@ -132,37 +132,29 @@ export default function History(props) {
             </div>
           ))}
           <div className="row justify-content-center m-0 mt-4">
-            <div className="col col-2 p-0 transfer-img d-grid">
-              <button className="btn btn-outline-primary">
-                <i className="bi bi-arrow-left" style={{ color: "blue" }}></i>
-              </button>
-            </div>
-            {
-              // totalPage
-              totalPage.map((item, index) => {
-                if (index >= 5) {
-                  return "";
-                } else {
-                  return (
-                    <div className="col col-2 p-0 transfer-img d-grid">
-                      <button
-                        className="btn btn-outline-primary"
-                        onClick={() => {
-                          router.push(`/history?page=${item + 1}`);
-                        }}
-                      >
-                        {item + 1}
-                      </button>
-                    </div>
-                  );
-                }
-              })
-            }
-            <div className="col col-2 p-0 transfer-img d-grid">
-              <button className="btn btn-outline-primary">
-                <i className="bi bi-arrow-right" style={{ color: "blue" }}></i>
-              </button>
-            </div>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel=">"
+              onPageChange={(e) => {
+                console.log(e.selected + 1);
+                router.push(`/history?page=${e.selected + 1}`);
+              }}
+              pageRangeDisplayed={5}
+              marginPagesDisplayed={1}
+              pageCount={totalPage}
+              previousLabel="<"
+              renderOnZeroPageCount={null}
+              pageClassName="page-item border-0 me-3"
+              pageLinkClassName="page-link border-0"
+              previousClassName="page-item border-0"
+              previousLinkClassName="page-link border-0 me-3"
+              nextClassName="page-item border-0"
+              nextLinkClassName="page-link border-0"
+              breakClassName="page-item border-0"
+              breakLinkClassName="page-link me-3 border-0"
+              containerClassName="pagination d-flex justify-content-center mt-5 pt-4"
+              activeClassName="active"
+            />
           </div>
         </div>
       </div>
@@ -171,10 +163,5 @@ export default function History(props) {
 }
 
 History.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      {/* <SideMenu /> */}
-      {page}
-    </Layout>
-  );
+  return <Layout>{page}</Layout>;
 };

@@ -85,7 +85,6 @@ export default function Home(props) {
   const [listIncome, setListIncome] = useState([]);
   const [listExpense, setListExpense] = useState([]);
   const [labels, setLabels] = useState([]);
-  const defaultImg = "https://cdn-icons-png.flaticon.com/512/747/747376.png";
   const id = Cookies.get("id");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -216,7 +215,7 @@ export default function Home(props) {
                       src={
                         item.image
                           ? process.env.URL_IMAGE + item.image
-                          : defaultImg
+                          : process.env.URL_DEFAULT_IMG
                       }
                       alt=""
                       className="transfer-img"
