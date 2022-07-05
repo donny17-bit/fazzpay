@@ -36,6 +36,6 @@ note yang belum (minus) :
 4. validasi belum
 5. handle error input belum
 6. img di transfer dan history msh salah alamat (v)
-7. notification belum
+7. notification belum (v)
 8. state kayaknya bisa di perbaiki
 9. inputAmount page page bisa pakai csr aja kayaknya

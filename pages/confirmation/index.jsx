@@ -149,5 +149,5 @@ export default function Confirmation(props) {
 }
 
 Confirmation.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return <Layout title={"Confirmation - Zwallet"}>{page}</Layout>;
 };

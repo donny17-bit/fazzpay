@@ -245,5 +245,5 @@ export default function Home(props) {
 }
 
 Home.getLayout = function getLayout(home) {
-  return <Layout>{home}</Layout>;
+  return <Layout title={"Home - Zwallet"}>{home}</Layout>;
 };

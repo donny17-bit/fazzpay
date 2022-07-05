@@ -87,5 +87,5 @@ export default function AddPhone() {
 }
 
 AddPhone.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return <Layout title={"Manage Phone - Zwallet"}>{page}</Layout>;
 };

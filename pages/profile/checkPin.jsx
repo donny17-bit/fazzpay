@@ -141,5 +141,5 @@ export default function CheckPin() {
 }
 
 CheckPin.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return <Layout title={"Check Pin - Zwallet"}>{page}</Layout>;
 };

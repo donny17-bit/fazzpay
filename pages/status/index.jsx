@@ -130,5 +130,5 @@ export default function Status(props) {
 }
 
 Status.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return <Layout title={"Status - Zwallet"}>{page}</Layout>;
 };

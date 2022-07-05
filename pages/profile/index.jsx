@@ -174,10 +174,5 @@ export default function Profile() {
 }
 
 Profile.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      {/* <SideMenu /> */}
-      {page}
-    </Layout>
-  );
+  return <Layout title={"Profile - Zwallet"}>{page}</Layout>;
 };

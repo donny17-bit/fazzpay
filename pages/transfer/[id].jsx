@@ -193,10 +193,5 @@ export default function InputAmount(props) {
 }
 
 InputAmount.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      {/* <SideMenu /> */}
-      {page}
-    </Layout>
-  );
+  return <Layout title={"Transfer - Zwallet"}>{page}</Layout>;
 };

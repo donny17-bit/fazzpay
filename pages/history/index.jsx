@@ -163,5 +163,5 @@ export default function History(props) {
 }
 
 History.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return <Layout title={"History - Zwallet"}>{page}</Layout>;
 };

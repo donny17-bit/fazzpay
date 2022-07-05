@@ -37,10 +37,5 @@ export default function PersonalInfo() {
 }
 
 PersonalInfo.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      {/* <SideMenu /> */}
-      {page}
-    </Layout>
-  );
+  return <Layout title={"Personal Info - Zwallet"}>{page}</Layout>;
 };

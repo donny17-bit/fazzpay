@@ -152,5 +152,5 @@ export default function Transfer(props) {
 }
 
 Transfer.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return <Layout title={"Transfer - Zwallet"}>{page}</Layout>;
 };
