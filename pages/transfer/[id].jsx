@@ -55,7 +55,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function InputAmount(props) {
-  const defaultImg = "https://cdn-icons-png.flaticon.com/512/747/747376.png";
+  const date = new Date();
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -73,6 +73,7 @@ export default function InputAmount(props) {
     receiverId: data.id,
     amount: "",
     notes: "",
+    date: date,
   });
 
   const handleChange = (event) => {
@@ -130,7 +131,11 @@ export default function InputAmount(props) {
           <div className="row border m-0 p-4 mt-4 register-list">
             <div className="col col-2 p-0 transfer-img">
               <img
-                src={data.image ? data.image : defaultImg}
+                src={
+                  data.image
+                    ? process.env.URL_IMAGE + data.image
+                    : process.env.URL_DEFAULT_IMG
+                }
                 alt=""
                 className="transfer-img"
               />

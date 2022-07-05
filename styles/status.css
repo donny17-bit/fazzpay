@@ -24,3 +24,8 @@
 .status-download {
   color: rgba(99, 121, 244, 1);
 }
+
+.status-pin-col {
+  width: 60px !important;
+  border-radius: 10px;
+}

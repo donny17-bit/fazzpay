@@ -45,9 +45,8 @@ export async function getServerSideProps(context) {
 
 export default function Confirmation(props) {
   const router = useRouter();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const transfer = useSelector((state) => state.transfer);
-  const defaultImg = "https://cdn-icons-png.flaticon.com/512/747/747376.png";
 
   const [receiver, setReceiver] = useState(transfer.data.dataReceiver);
   const [dataTransfer, setDataTransfer] = useState(transfer.data.form);
@@ -67,6 +66,13 @@ export default function Confirmation(props) {
 
     // await dispatch(type: )
     console.log(result);
+    await dispatch({
+      type: "SET_DATA_TRANSFER",
+      data: {
+        form: { ...dataTransfer, data: result.data.data },
+        dataReceiver: receiver,
+      },
+    });
     router.push("/status");
   };
 
@@ -80,7 +86,11 @@ export default function Confirmation(props) {
           <div className="row border m-0 p-4 register-list">
             <div className="col col-2 p-0 transfer-img">
               <img
-                src={receiver.image ? receiver.image : defaultImg}
+                src={
+                  receiver.image
+                    ? process.env.URL_IMAGE + receiver.image
+                    : process.env.URL_DEFAULT_IMG
+                }
                 alt=""
                 className="transfer-img"
               />
@@ -90,13 +100,6 @@ export default function Confirmation(props) {
               <p className="m-0 transfer-phone">{receiver.noTelp}</p>
             </div>
           </div>
-          {/* <List
-            data={{
-              image: "/assets/2.png",
-              title: "First Name",
-              content: "Robert",
-            }}
-          /> */}
           <div className="row m-0">
             <label className="transfer-label p-0 mt-5">Details</label>
           </div>
@@ -110,8 +113,15 @@ export default function Confirmation(props) {
             }}
           />
           <List
-            // time & data msh static
-            data={{ title: "Date & Time", content: "May 11, 2020 - 12.20" }}
+            data={{
+              title: "Date & Time",
+              content: `${dataTransfer.date
+                .toString()
+                .slice(
+                  0,
+                  15
+                )} - ${dataTransfer.date.getHours()}.${dataTransfer.date.getMinutes()}`,
+            }}
           />
           <List data={{ title: "Notes", content: `${dataTransfer.notes}` }} />
           <div className="justify-content-end d-flex">

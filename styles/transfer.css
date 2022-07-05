@@ -36,6 +36,8 @@
 
 .row .transfer-img {
   width: 70px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .transfer-name {

@@ -32,11 +32,9 @@ export async function getServerSideProps(context) {
         Authorization: `Bearer ${dataCookies.token}`,
       },
     });
-    // const result = await axios.get(`/dashboard/${id}`);
     return {
       props: {
         data: [result.data.data, result2.data.data],
-        // data: result.data.data,
         page: page,
         totalPage: result.data.pagination.totalPage,
       },
@@ -147,13 +145,13 @@ export default function Home(props) {
 
   useEffect(() => {
     setHistory(props.data[0]);
-  }, props.data[0]);
+  }, [props.data[0]]);
 
   useEffect(() => {
     // pemanggilan reducer untuk menyimpan data user ke redux
     // dispatch({ type: "SET_ALL_DATA_USER", data: props.data });
     setData(props.data[1]);
-  }, props.data[1]);
+  }, [props.data[1]]);
 
   return (
     <>
@@ -217,7 +215,7 @@ export default function Home(props) {
                     <img
                       src={
                         item.image
-                          ? `https://res.cloudinary.com/dd1uwz8eu/image/upload/v1653276449/${item.image}`
+                          ? process.env.URL_IMAGE + item.image
                           : defaultImg
                       }
                       alt=""

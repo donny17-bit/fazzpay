@@ -2,6 +2,7 @@
   height: 200px;
   background: #6379f4;
   border-radius: 20px;
+  background: linear-gradient(180deg, #4927f2 0%, #444ab1 100%);
 }
 
 .balance-text {

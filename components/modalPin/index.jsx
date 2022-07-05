@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button } from "react-bootstrap";
 import axios from "../../utils/axios";
 
@@ -69,11 +69,11 @@ export default function ModalPin(props) {
                 Wrong PIN
               </div> */}
             </div>
-            <div className="row mt-4 row-cols-6 auth-pin-row p-2">
-              <div className="col border auth-pin-col">
+            <div className="row mt-4 row-cols-6 auth-pin-row p-2 justify-content-center">
+              <div className="col border status-pin-col me-2">
                 <input
                   type="text"
-                  className="form-control auth-input-pin  pe-0"
+                  className="form-control auth-input-pin pe-0"
                   maxLength={1}
                   id="pin-1"
                   name="1"
@@ -83,10 +83,10 @@ export default function ModalPin(props) {
                   aria-describedby="basic-addon1"
                 />
               </div>
-              <div className="col border auth-pin-col">
+              <div className="col border status-pin-col me-2">
                 <input
                   type="text"
-                  className="form-control auth-input-pin  pe-0"
+                  className="form-control auth-input-pin pe-0"
                   maxLength={1}
                   id="pin-2"
                   name="2"
@@ -96,7 +96,7 @@ export default function ModalPin(props) {
                   aria-describedby="basic-addon1"
                 />
               </div>
-              <div className="col border auth-pin-col">
+              <div className="col border status-pin-col me-2">
                 <input
                   type="text"
                   className="form-control auth-input-pin  pe-0"
@@ -109,7 +109,7 @@ export default function ModalPin(props) {
                   aria-describedby="basic-addon1"
                 />
               </div>
-              <div className="col border auth-pin-col">
+              <div className="col border status-pin-col me-2">
                 <input
                   type="text"
                   className="form-control auth-input-pin  pe-0"
@@ -122,7 +122,7 @@ export default function ModalPin(props) {
                   aria-describedby="basic-addon1"
                 />
               </div>
-              <div className="col border auth-pin-col">
+              <div className="col border status-pin-col me-2">
                 <input
                   type="text"
                   className="form-control auth-input-pin  pe-0"
@@ -135,7 +135,7 @@ export default function ModalPin(props) {
                   aria-describedby="basic-addon1"
                 />
               </div>
-              <div className="col border auth-pin-col">
+              <div className="col border status-pin-col me-2">
                 <input
                   type="text"
                   className="form-control auth-input-pin  pe-0"

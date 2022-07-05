@@ -47,7 +47,6 @@ export async function getServerSideProps(context) {
 export default function Transfer(props) {
   const dispatch = useDispatch();
   const router = useRouter();
-  // console.log(props);
   let totalPage = [];
   const [search, setSearch] = useState("");
 
@@ -55,9 +54,7 @@ export default function Transfer(props) {
     totalPage.push(i);
   }
   const [data, setData] = useState(props.data);
-  const defaultImg = "https://cdn-icons-png.flaticon.com/512/747/747376.png";
-
-  // console.log(totalPage);
+  const defaultImg = process.env.URL_DEFAULT_IMG;
 
   const handleClick = (index) => {
     router.push(`/transfer/${index}`);
@@ -110,7 +107,9 @@ export default function Transfer(props) {
             >
               <div className="col col-2 p-0 transfer-img">
                 <img
-                  src={item.image ? item.image : defaultImg}
+                  src={
+                    item.image ? process.env.URL_IMAGE + item.image : defaultImg
+                  }
                   alt=""
                   className="transfer-img"
                 />
