@@ -2,13 +2,28 @@ import { React } from "react";
 import { Link } from "next/link";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import Dropdown from "react-bootstrap/Dropdown";
+import axios from "../../utils/axios";
+import { useEffect } from "react";
+import MiniCard from "../miniCard";
+import { useState } from "react";
 
 export default function Navbar() {
   const user = useSelector((state) => state.user);
-
-  // console.log(user);
   const data = user.data;
-  const defaultImg = "https://cdn-icons-png.flaticon.com/512/747/747376.png";
+  const [history, setHistory] = useState([]);
+
+  const handleNotif = async () => {
+    const result = await axios.get(
+      `/transaction/history?page=1&limit=5&filter=WEEK`
+    );
+    console.log(result.data.data);
+    setHistory(result.data.data);
+  };
+
+  useEffect(() => {
+    handleNotif();
+  }, []);
 
   return (
     <>
@@ -19,7 +34,9 @@ export default function Navbar() {
             <div className="col-2">
               <img
                 src={
-                  data.image ? process.env.URL_IMAGE + data.image : defaultImg
+                  data.image
+                    ? process.env.URL_IMAGE + data.image
+                    : process.env.URL_DEFAULT_IMG
                 }
                 alt=""
                 className="navbar-img profile-navbar"
@@ -29,8 +46,19 @@ export default function Navbar() {
               <p className=" navbar-name">{data.firstName}</p>
               <p className=" navbar-phone">{data.noTelp}</p>
             </div>
-            <div className="col-2  pt-3">
-              <i className="bi-bell" style={{ color: "black" }}></i>
+            <div className="col-2 pt-2 ps-0">
+              <Dropdown>
+                <Dropdown.Toggle variant="link" bsPrefix="dropdown">
+                  <i className="bi-bell" style={{ color: "black" }}></i>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  {history.map((item) => (
+                    <Dropdown.Item key={item.id}>
+                      <MiniCard data={item} />
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
           </div>
         </div>

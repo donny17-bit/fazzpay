@@ -30,12 +30,12 @@ exm : live chat
 
 note yang belum (minus) :
 
-1. pagination blm perfect
+1. pagination blm perfect (v)
 2. profile belum implement (v)
-3. grafik dashboard belum
+3. grafik dashboard belum (v)
 4. validasi belum
 5. handle error input belum
-6. img di transfer dan history msh salah alamat
+6. img di transfer dan history msh salah alamat (v)
 7. notification belum
 8. state kayaknya bisa di perbaiki
 9. inputAmount page page bisa pakai csr aja kayaknya
