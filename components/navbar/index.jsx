@@ -19,12 +19,10 @@ export default function Navbar() {
             <div className="col-2">
               <img
                 src={
-                  data.image
-                    ? `https://res.cloudinary.com/dd1uwz8eu/image/upload/v1653276449/${data.image}`
-                    : defaultImg
+                  data.image ? process.env.URL_IMAGE + data.image : defaultImg
                 }
                 alt=""
-                className="navbar-img "
+                className="navbar-img profile-navbar"
               />
             </div>
             <div className="col navbar-col">

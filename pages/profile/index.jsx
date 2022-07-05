@@ -14,20 +14,46 @@ import { getUserId } from "../../stores/action/user";
 
 export default function Profile() {
   const router = useRouter();
-  const id = Cookies.get("id");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [src, setSrc] = useState(
     "https://cdn-icons-png.flaticon.com/512/747/747376.png"
   );
   const [data, setData] = useState(user.data);
-  // const [image, setImage] = useState(
-  //   (src = "https://cdn-icons-png.flaticon.com/512/747/747376.png")
-  // );
+  const [image, setImage] = useState();
+  const [form, setForm] = useState({ image: "" });
 
-  if (data.image) {
-    setSrc(data.image);
-  }
+  const changeImg = (e) => {
+    const { name, value, files } = e.target;
+    if (files[0]) {
+      setForm({ ...form, [name]: files[0] });
+      setImage(URL.createObjectURL(files[0]));
+    }
+  };
+
+  const handleImage = async (e) => {
+    try {
+      e.preventDefault();
+      const formData = new FormData();
+      for (const dataForm in form) {
+        formData.append(dataForm, form[dataForm]);
+      }
+
+      const result = await axios.patch(`user/image/${data.id}`, formData);
+      console.log(result.data);
+
+      resetImg();
+
+      alert("sukses update photo");
+      getUser();
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+  console.log(user);
+  console.log(form);
+  console.log(image);
 
   const handleLogout = async (event) => {
     event.preventDefault();
@@ -41,30 +67,66 @@ export default function Profile() {
     router.push("/login");
   };
 
-  console.log(data);
   const getUser = async () => {
-    const result = await dispatch(getUserId(id));
-    // console.log(result.value.data.data);
+    const result = await dispatch(getUserId(data.id));
     setData(result.value.data.data);
   };
 
+  const resetImg = () => {
+    setImage();
+  };
+
   useEffect(() => {
-    // getUser();
-  }, []);
+    if (data.image) {
+      setSrc(process.env.URL_IMAGE + data.image);
+    }
+  }, [image]);
 
   return (
     <>
       <div className="col border p-5 main-content main-content-inputAmount">
         <div className="row  row-cols-1 m-0 justify-content-center d-flex">
           <div className="col p-0 text-center">
-            <img src={src} className="profile-photo" alt="" />
+            <img src={image ? image : src} className="profile-photo" alt="" />
           </div>
-          <div className="col p-0  text-center">
-            <button className="btn btn-link profile-edit ">
+          <div className="col p-0 text-center">
+            <label className="btn btn-link profile-edit" for="uploadImg">
               <i className="bi bi-pen"></i> Edit
-            </button>
+            </label>
+            <input
+              type="file"
+              name="image"
+              id="uploadImg"
+              hidden
+              onChange={(e) => changeImg(e)}
+            />
           </div>
         </div>
+        {image ? (
+          <>
+            <div className="row justify-content-center">
+              <button
+                className="btn btn-success mb-3"
+                style={{ width: "150px" }}
+                onClick={(e) => handleImage(e)}
+              >
+                Save
+              </button>
+            </div>
+            <div className="row justify-content-center">
+              <button
+                className="btn btn-outline-danger"
+                style={{ width: "150px" }}
+                onClick={resetImg}
+              >
+                Cancel
+              </button>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+
         <div className="row mt-4  m-0">
           <label className=" profile-name">
             {data.firstName + " " + data.lastName}

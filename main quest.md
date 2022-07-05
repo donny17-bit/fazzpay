@@ -31,7 +31,7 @@ exm : live chat
 note yang belum (minus) :
 
 1. pagination blm perfect
-2. profile belum implement
+2. profile belum implement (v)
 3. grafik dashboard belum
 4. validasi belum
 5. handle error input belum

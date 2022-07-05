@@ -4,6 +4,7 @@ const nextConfig = {
   env: {
     URL_BACKEND: "https://fazzpay.herokuapp.com",
     URL_BACKEND2: "https://jsonplaceholder.typicode.com",
+    URL_IMAGE: "https://res.cloudinary.com/dd1uwz8eu/image/upload/v1653276449/",
   },
   async rewrites() {
     return [
