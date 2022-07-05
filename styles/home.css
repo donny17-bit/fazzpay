@@ -5,11 +5,31 @@
 }
 
 .dashboard-container1 {
-  height: 400px;
+  height: 300px;
   background: #ffff;
   border-radius: 20px;
 }
 
 .home-link {
   text-decoration: none;
+}
+
+.home-type {
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: #6a6a6a;
+}
+
+.home-balance {
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+
+  color: #3a3d42;
 }
